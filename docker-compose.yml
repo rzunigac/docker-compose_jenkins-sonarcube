@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  jenkins:
+    build:
+      context: .
+      dockerfile: jenkins-dockerfile
+    ports:
+      - "8087:8080"
+      - "50007:50000"
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+      DOCKER_CERT_PATH: /certs/client
+      DOCKER_TLS_VERIFY: 1
+    volumes:
+      - jenkins-home:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+
+  sonarqube:
+    image: sonarqube:latest
+    ports:
+      - "9007:9000"
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+
+volumes:
+  jenkins-home:
+  jenkins-docker-certs:
