@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: jenkins-dockerfile
     ports:
-      - "8087:8080"
-      - "50007:50000"
+      - "8080:8080"
+      - "50000:50000"
     environment:
       DOCKER_HOST: tcp://docker:2376
       DOCKER_CERT_PATH: /certs/client
@@ -20,7 +20,7 @@ services:
   sonarqube:
     image: sonarqube:latest
     ports:
-      - "9007:9000"
+      - "9000:9000"
     environment:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
 
