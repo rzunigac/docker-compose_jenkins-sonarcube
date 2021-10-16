@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.289.1-lts-jdk11
+FROM jenkins/jenkins:2.303.2-lts-jdk11
 
 USER root
 
@@ -18,4 +18,4 @@ RUN apt-get update && apt-get install -y docker-ce-cli
 
 USER jenkins
 
-RUN jenkins-plugin-cli --plugins "blueocean:1.24.6 docker-workflow:1.26"
+RUN jenkins-plugin-cli --plugins "blueocean dependency-check-jenkins-plugin docker-workflow nodejs sonar"
